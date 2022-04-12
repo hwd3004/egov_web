@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd" >
+
+<!-- map 타입앨리어스 추가 -->
+<configuration>
+	<typeAliases>
+		<typeAliase type="java.util.Map" alias="map" />
+	</typeAliases>
+</configuration>

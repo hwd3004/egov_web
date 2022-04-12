@@ -15,5 +15,7 @@
 
 	<!-- 스크립트 -->
 	<div>${userid}</div>
+	
+	<div>${serverId}</div>
 </body>
 </html>

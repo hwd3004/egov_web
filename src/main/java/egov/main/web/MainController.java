@@ -1,5 +1,8 @@
 package egov.main.web;
 
+import java.util.HashMap;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -9,8 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import egov.main.service.MainService;
+
 @Controller
 public class MainController {
+
+	@Resource(name = "MainService")
+	MainService mainService;
 
 	@RequestMapping(value = "/main.do")
 	public String main(HttpServletRequest request, ModelMap model) {
@@ -50,6 +58,22 @@ public class MainController {
 	@RequestMapping(value = "/main4/{userNo}.do")
 	public String main4(@PathVariable String userNo, HttpServletRequest request, ModelMap model) {
 		model.addAttribute("userNo", userNo);
+
+		return "main/main3";
+	}
+
+	@RequestMapping(value = "/main5.do")
+	public String main5(HttpServletRequest request, ModelMap model) throws Exception {
+		String userid = "";
+
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+
+		resultMap = mainService.selectMain(paramMap);
+
+		userid = resultMap.get("user_id").toString();
+
+		model.addAttribute("serverId", userid);
 
 		return "main/main3";
 	}
